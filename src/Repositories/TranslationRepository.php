@@ -10,6 +10,13 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\NamespacedItemResolver;
 use Waavi\Translation\Models\Translation;
 
+use function is_null;
+use function substr;
+use function explode;
+use function stripos;
+use function is_string;
+use function compact;
+
 class TranslationRepository extends Repository
 {
     /**

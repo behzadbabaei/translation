@@ -8,6 +8,12 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
+use function snake_case;
+use function str_replace;
+use function strtolower;
+use function trans;
+use function in_array;
+
 trait Translatable
 {
     /**

@@ -4,6 +4,8 @@ namespace Waavi\Translation\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use function config;
+
 class Translation extends Model
 {
     /**

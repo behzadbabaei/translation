@@ -19,6 +19,9 @@ use Waavi\Translation\Repositories\LanguageRepository;
 use Waavi\Translation\Repositories\TranslationRepository;
 use Waavi\Translation\Routes\ResourceRegistrar;
 
+use function config_path;
+use function array_merge;
+
 class TranslationServiceProvider extends LaravelTranslationServiceProvider
 {
     /**

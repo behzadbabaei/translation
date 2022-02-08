@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 use Illuminate\Database\Migrations\Migration;
 
+use function config;
+
 class CreateLanguagesTable extends Migration
 {
     /**

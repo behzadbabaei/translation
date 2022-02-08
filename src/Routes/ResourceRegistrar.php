@@ -8,6 +8,11 @@ use Illuminate\Routing\ResourceRegistrar as LRR;
 use Illuminate\Routing\Router;
 use Waavi\Translation\Repositories\LanguageRepository;
 
+use function explode;
+use function array_filter;
+use function in_array;
+use function trim;
+
 class ResourceRegistrar extends LRR
 {
     /**
@@ -27,6 +32,7 @@ class ResourceRegistrar extends LRR
     public function __construct(Router $router, LanguageRepository $languageRepository)
     {
         parent::__construct($router);
+
         $this->languageRepository = $languageRepository;
     }
 

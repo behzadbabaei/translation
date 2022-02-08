@@ -9,6 +9,8 @@ use Illuminate\Contracts\Translation\Loader as LoaderContract;
 use Waavi\Translation\Repositories\LanguageRepository;
 use Waavi\Translation\Repositories\TranslationRepository;
 
+use function array_replace_recursive;
+
 abstract class Loader implements LoaderContract
 {
     /**

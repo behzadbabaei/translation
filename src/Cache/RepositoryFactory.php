@@ -7,6 +7,8 @@ namespace Waavi\Translation\Cache;
 use Illuminate\Contracts\Cache\Store;
 use \ReflectionClass;
 
+use function get_class;
+
 class RepositoryFactory
 {
     public static function make(Store $store, $cacheTag)

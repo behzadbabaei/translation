@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Waavi\Translation\Loaders;
 
+use function array_replace_recursive;
+
 class MixedLoader extends Loader
 {
     /**

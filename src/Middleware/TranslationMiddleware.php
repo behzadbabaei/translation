@@ -11,16 +11,18 @@ use Illuminate\View\Factory as ViewFactory;
 use Waavi\Translation\Repositories\LanguageRepository;
 use Waavi\Translation\UriLocalizer;
 
+use function substr;
+
 class TranslationMiddleware
 {
     /**
      *  Constructor
      *
-     * @param Waavi\Translation\UriLocalizer $uriLocalizer
+     * @param Waavi\Translation\UriLocalizer                    $uriLocalizer
      * @param Waavi\Translation\Repositories\LanguageRepository $languageRepository
-     * @param Illuminate\Config\Repository $config Laravel config
-     * @param Illuminate\View\Factory $viewFactory
-     * @param Illuminate\Foundation\Application $app
+     * @param Illuminate\Config\Repository                      $config Laravel config
+     * @param Illuminate\View\Factory                           $viewFactory
+     * @param Illuminate\Foundation\Application                 $app
      */
     public function __construct(
         UriLocalizer $uriLocalizer,

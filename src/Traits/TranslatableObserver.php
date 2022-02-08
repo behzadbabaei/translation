@@ -7,6 +7,8 @@ namespace Waavi\Translation\Traits;
 use Waavi\Translation\Models\Translation;
 use Waavi\Translation\Repositories\TranslationRepository;
 
+use function config;
+
 class TranslatableObserver
 {
     /**

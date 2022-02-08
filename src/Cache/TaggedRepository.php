@@ -6,6 +6,9 @@ namespace Waavi\Translation\Cache;
 
 use Illuminate\Contracts\Cache\Store;
 
+use function is_null;
+use function md5;
+
 class TaggedRepository implements CacheRepositoryInterface
 {
     /**

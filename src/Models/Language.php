@@ -7,6 +7,8 @@ namespace Waavi\Translation\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use function config;
+
 class Language extends Model
 {
     use SoftDeletes;

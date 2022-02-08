@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Waavi\Translation\Repositories\LanguageRepository;
 
+use function array_splice;
+use function count;
+use function array_values;
+use function array_filter;
+use function explode;
+use function parse_url;
+use function in_array;
+use function implode;
+use function strlen;
+use function substr;
+
 class UriLocalizer
 {
     /**
