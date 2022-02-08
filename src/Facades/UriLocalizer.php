@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Facades;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Facades;
 
 use \Illuminate\Support\Facades\Facade;
 

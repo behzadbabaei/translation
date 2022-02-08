@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Localizer;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Localizer;
 
 // PHPUnit wrappers:
 use UriLocalizer;
@@ -59,7 +63,8 @@ class LocalizeUriTest extends TestCase
      */
     public function it_maintains_get_parameters()
     {
-        $this->assertEquals('/es/random?param1=value1&param2=', UriLocalizer::localize('random?param1=value1&param2=', 'es'));
+        $this->assertEquals('/es/random?param1=value1&param2=',
+            UriLocalizer::localize('random?param1=value1&param2=', 'es'));
     }
 
     /**

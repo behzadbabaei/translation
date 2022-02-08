@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Loaders;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Loaders;
 
 use Waavi\Translation\Loaders\DatabaseLoader;
 use Waavi\Translation\Repositories\TranslationRepository;
@@ -7,14 +11,14 @@ use \Mockery;
 
 class DatabaseLoaderTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
         $this->translationRepository = \App::make(TranslationRepository::class);
-        $this->loader                = new DatabaseLoader('es', $this->translationRepository);
+        $this->loader = new DatabaseLoader('es', $this->translationRepository);
     }
 
-    public function tearDown():void
+    public function tearDown() : void
     {
         Mockery::close();
         parent::tearDown();

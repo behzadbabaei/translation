@@ -1,10 +1,14 @@
-<?php namespace Waavi\Translation\Test\Cache;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Cache;
 
 use Waavi\Translation\Test\TestCase;
 
 class TranslationCacheTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         // During the parent's setup, both a 'es' 'Spanish' and 'en' 'English' languages are inserted into the database.
         parent::setUp();

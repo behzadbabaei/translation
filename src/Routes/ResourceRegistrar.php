@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Waavi\Translation\Routes;
 
 use Illuminate\Routing\ResourceRegistrar as LRR;
@@ -18,7 +20,8 @@ class ResourceRegistrar extends LRR
     /**
      * Create a new resource registrar instance.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function __construct(Router $router, LanguageRepository $languageRepository)
@@ -30,9 +33,10 @@ class ResourceRegistrar extends LRR
     /**
      * Get the resource name for a grouped resource.
      *
-     * @param  string  $prefix
-     * @param  string  $resource
-     * @param  string  $method
+     * @param string $prefix
+     * @param string $resource
+     * @param string $method
+     *
      * @return string
      */
     protected function getGroupResourceName($prefix, $resource, $method)

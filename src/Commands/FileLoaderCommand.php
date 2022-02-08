@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Commands;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -67,9 +71,11 @@ class FileLoaderCommand extends Command
         $directories      = $this->files->directories($path);
         foreach ($directories as $directory) {
             $locale = basename($directory);
+
             if (in_array($locale, $availableLocales)) {
                 $this->loadDirectory($directory, $locale, $namespace);
             }
+
             if ($locale === 'vendor' && $namespace === '*') {
                 $this->loadVendor($directory);
             }
@@ -86,6 +92,7 @@ class FileLoaderCommand extends Command
     public function loadVendor($path)
     {
         $directories = $this->files->directories($path);
+
         foreach ($directories as $directory) {
             $namespace = basename($directory);
             $this->loadLocaleDirectories($directory, $namespace);
@@ -105,6 +112,7 @@ class FileLoaderCommand extends Command
     {
         // Load all files inside subdirectories:
         $directories = $this->files->directories($path);
+
         foreach ($directories as $directory) {
             $directoryName = str_replace($path . '/', '', $directory);
             $dirGroup      = $group . basename($directory) . '/';
@@ -113,6 +121,7 @@ class FileLoaderCommand extends Command
 
         // Load all files in root:
         $files = $this->files->files($path);
+
         foreach ($files as $file) {
             $this->loadFile($file, $locale, $namespace, $group);
         }

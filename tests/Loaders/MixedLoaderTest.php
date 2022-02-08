@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Loaders;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Loaders;
 
 use Waavi\Translation\Loaders\DatabaseLoader;
 use Waavi\Translation\Loaders\FileLoader;
@@ -8,15 +12,15 @@ use \Mockery;
 
 class MixedLoaderTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
-        $this->fileLoader  = Mockery::mock(FileLoader::class);
-        $this->dbLoader    = Mockery::mock(DatabaseLoader::class);
+        $this->fileLoader = Mockery::mock(FileLoader::class);
+        $this->dbLoader = Mockery::mock(DatabaseLoader::class);
         $this->mixedLoader = new MixedLoader('en', $this->fileLoader, $this->dbLoader);
     }
 
-    public function tearDown(): void
+    public function tearDown() : void
     {
         Mockery::close();
         parent::tearDown();

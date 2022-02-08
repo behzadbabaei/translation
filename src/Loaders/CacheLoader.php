@@ -1,4 +1,6 @@
-<?php namespace Waavi\Translation\Loaders;
+<?php
+
+namespace Waavi\Translation\Loaders;
 
 use Waavi\Translation\Cache\CacheRepositoryInterface as Cache;
 

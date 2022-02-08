@@ -1,25 +1,33 @@
-<?php namespace Waavi\Translation\Models;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Language extends Model
 {
-    use \Illuminate\Database\Eloquent\SoftDeletes;
+    use SoftDeletes;
 
     /**
      *  Table name in the database.
-     *  @var string
+     *
+     * @var string
      */
     protected $table = 'translator_languages';
 
     /**
      *  List of variables that cannot be mass assigned
-     *  @var array
+     *
+     * @var array
      */
     protected $fillable = ['locale', 'name'];
 
     /**
      * Language constructor.
+     *
      * @param array $attributes
      */
     public function __construct(array $attributes = [])
@@ -40,11 +48,10 @@ class Language extends Model
     /**
      *  Returns the name of this language in the current selected language.
      *
-     *  @return string
+     * @return string
      */
     public function getLanguageCodeAttribute()
     {
         return "languages.{$this->locale}";
     }
-
 }

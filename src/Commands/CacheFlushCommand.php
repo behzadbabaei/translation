@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Commands;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Commands;
 
 use Illuminate\Console\Command;
 use Waavi\Translation\Cache\CacheRepositoryInterface as CacheRepository;
@@ -22,21 +26,21 @@ class CacheFlushCommand extends Command
     /**
      *  Create the cache flushed command
      *
-     *  @param  \Waavi\Lang\Providers\LanguageProvider        $languageRepository
-     *  @param  \Waavi\Lang\Providers\LanguageEntryProvider   $translationRepository
-     *  @param  \Illuminate\Foundation\Application            $app
+     * @param \Waavi\Lang\Providers\LanguageProvider      $languageRepository
+     * @param \Waavi\Lang\Providers\LanguageEntryProvider $translationRepository
+     * @param \Illuminate\Foundation\Application          $app
      */
     public function __construct(CacheRepository $cacheRepository, $cacheEnabled)
     {
         parent::__construct();
         $this->cacheRepository = $cacheRepository;
-        $this->cacheEnabled    = $cacheEnabled;
+        $this->cacheEnabled = $cacheEnabled;
     }
 
     /**
      *  Execute the console command.
      *
-     *  @return void
+     * @return void
      */
     public function fire()
     {
@@ -47,13 +51,14 @@ class CacheFlushCommand extends Command
             $this->info('Translation cache cleared.');
         }
     }
-    
+
     /**
      * Execute the console command for Laravel 5.5
      * this laravel version call handle intead of fire
      */
-     public function handle()
-     {
-         $this->fire();
-     }
+    public function handle()
+    {
+        $this->fire();
+    }
 }
+

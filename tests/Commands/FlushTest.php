@@ -1,17 +1,21 @@
-<?php namespace Waavi\Translation\Test\Commands;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Commands;
 
 use Mockery;
 use Waavi\Translation\Test\TestCase;
 
 class FlushTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
         $this->cacheRepository = \App::make('translation.cache.repository');
     }
 
-    public function tearDown(): void
+    public function tearDown() : void
     {
         parent::tearDown();
         Mockery::close();

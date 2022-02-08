@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Loaders;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Loaders;
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Translation\Loader as LoaderContract;
@@ -17,9 +21,9 @@ abstract class Loader implements LoaderContract
     /**
      *  Create a new loader instance.
      *
-     *  @param  \Waavi\Translation\Repositories\LanguageRepository      $languageRepository
-     *  @param  \Waavi\Translation\Repositories\TranslationRepository   $translationRepository
-     *  @param  \Illuminate\Config\Repository                           $config
+     * @param \Waavi\Translation\Repositories\LanguageRepository    $languageRepository
+     * @param \Waavi\Translation\Repositories\TranslationRepository $translationRepository
+     * @param \Illuminate\Config\Repository                         $config
      */
     public function __construct($defaultLocale)
     {
@@ -29,9 +33,10 @@ abstract class Loader implements LoaderContract
     /**
      * Load the messages for the given locale.
      *
-     * @param  string  $locale
-     * @param  string  $group
-     * @param  string  $namespace
+     * @param string $locale
+     * @param string $group
+     * @param string $namespace
+     *
      * @return array
      */
     public function load($locale, $group, $namespace = null)
@@ -42,15 +47,17 @@ abstract class Loader implements LoaderContract
                 $this->loadSource($locale, $group, $namespace)
             );
         }
+
         return $this->loadSource($locale, $group, $namespace);
     }
 
     /**
      * Load the messages for the given locale from the loader source (cache, file, database, etc...)
      *
-     * @param  string  $locale
-     * @param  string  $group
-     * @param  string  $namespace
+     * @param string $locale
+     * @param string $group
+     * @param string $namespace
+     *
      * @return array
      */
     abstract public function loadSource($locale, $group, $namespace = null);
@@ -58,8 +65,9 @@ abstract class Loader implements LoaderContract
     /**
      * Add a new namespace to the loader.
      *
-     * @param  string  $namespace
-     * @param  string  $hint
+     * @param string $namespace
+     * @param string $hint
+     *
      * @return void
      */
     abstract public function addNamespace($namespace, $hint);
@@ -67,7 +75,8 @@ abstract class Loader implements LoaderContract
     /**
      * Add a new JSON path to the loader.
      *
-     * @param  string  $path
+     * @param string $path
+     *
      * @return void
      **/
     abstract public function addJsonPath($path);

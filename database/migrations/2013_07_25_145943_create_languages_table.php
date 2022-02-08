@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 
 class CreateLanguagesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -30,5 +31,4 @@ class CreateLanguagesTable extends Migration
     {
         Schema::drop('translator_languages');
     }
-
 }

@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Loaders;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Loaders;
 
 use Waavi\Translation\Cache\SimpleRepository as Cache;
 use Waavi\Translation\Loaders\CacheLoader;
@@ -8,15 +12,15 @@ use \Mockery;
 
 class CacheLoaderTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
-        $this->cache       = Mockery::mock(Cache::class);
-        $this->fallback    = Mockery::mock(Loader::class);
+        $this->cache = Mockery::mock(Cache::class);
+        $this->fallback = Mockery::mock(Loader::class);
         $this->cacheLoader = new CacheLoader('en', $this->cache, $this->fallback, 60, 'translation');
     }
 
-    public function tearDown(): void
+    public function tearDown() : void
     {
         Mockery::close();
         parent::tearDown();

@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Commands;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Commands;
 
 use Waavi\Translation\Commands\FileLoaderCommand;
 use Waavi\Translation\Repositories\LanguageRepository;
@@ -7,13 +11,14 @@ use Waavi\Translation\Test\TestCase;
 
 class LoadTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
-        $this->languageRepository    = \App::make(LanguageRepository::class);
+        $this->languageRepository = \App::make(LanguageRepository::class);
         $this->translationRepository = \App::make(TranslationRepository::class);
-        $translationsPath            = realpath(__DIR__ . '/../lang');
-        $this->command               = new FileLoaderCommand($this->languageRepository, $this->translationRepository, \App::make('files'), $translationsPath, 'en');
+        $translationsPath = realpath(__DIR__.'/../lang');
+        $this->command = new FileLoaderCommand($this->languageRepository, $this->translationRepository,
+            \App::make('files'), $translationsPath, 'en');
     }
 
     /**
@@ -21,7 +26,7 @@ class LoadTest extends TestCase
      */
     public function it_loads_files_into_database()
     {
-        $file = realpath(__DIR__ . '/../lang/en/auth.php');
+        $file = realpath(__DIR__.'/../lang/en/auth.php');
         $this->command->loadFile($file, 'en');
         $translations = $this->translationRepository->all();
 
@@ -51,7 +56,7 @@ class LoadTest extends TestCase
      */
     public function it_loads_files_in_subdirectories_into_database()
     {
-        $directory = realpath(__DIR__ . '/../lang/es');
+        $directory = realpath(__DIR__.'/../lang/es');
         $this->command->loadDirectory($directory, 'es');
         $translations = $this->translationRepository->all()->sortBy('id');
 
@@ -93,12 +98,16 @@ class LoadTest extends TestCase
 
         $this->assertEquals(9, $translations->count());
 
-        $this->assertEquals('Texto proveedor', $translations->where('locale', 'es')->where('namespace', 'package')->where('group', 'example')->where('item', 'entry')->first()->text);
-        $this->assertEquals('Vendor text', $translations->where('locale', 'en')->where('namespace', 'package')->where('group', 'example')->where('item', 'entry')->first()->text);
+        $this->assertEquals('Texto proveedor',
+            $translations->where('locale', 'es')->where('namespace', 'package')->where('group', 'example')
+                ->where('item', 'entry')->first()->text);
+        $this->assertEquals('Vendor text',
+            $translations->where('locale', 'en')->where('namespace', 'package')->where('group', 'example')
+                ->where('item', 'entry')->first()->text);
     }
 
     /**
-     *  @test
+     * @test
      */
     public function it_doesnt_overwrite_locked_translations()
     {
@@ -112,7 +121,7 @@ class LoadTest extends TestCase
         $trans->locked = true;
         $trans->save();
 
-        $file = realpath(__DIR__ . '/../lang/en/auth.php');
+        $file = realpath(__DIR__.'/../lang/en/auth.php');
         $this->command->loadFile($file, 'en');
         $translations = $this->translationRepository->all();
 
@@ -132,11 +141,11 @@ class LoadTest extends TestCase
     }
 
     /**
-     *  @test
+     * @test
      */
     public function it_doesnt_load_empty_arrays()
     {
-        $file = realpath(__DIR__ . '/../lang/en/empty.php');
+        $file = realpath(__DIR__.'/../lang/en/empty.php');
         $this->command->loadFile($file, 'en');
         $translations = $this->translationRepository->all();
 

@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Test\Localizer;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Test\Localizer;
 
 use UriLocalizer;
 use Waavi\Translation\Test\TestCase;
@@ -43,7 +47,8 @@ class CleanUrlTest extends TestCase
      */
     public function it_keeps_query_string()
     {
-        $this->assertEquals('/random?param=value&param=', UriLocalizer::cleanUrl('https://domain.com/random/?param=value&param='));
+        $this->assertEquals('/random?param=value&param=',
+            UriLocalizer::cleanUrl('https://domain.com/random/?param=value&param='));
     }
 
     /**
@@ -51,7 +56,8 @@ class CleanUrlTest extends TestCase
      */
     public function it_removes_locale_string()
     {
-        $this->assertEquals('/random?param=value&param=', UriLocalizer::cleanUrl('https://domain.com/es/random/?param=value&param='));
+        $this->assertEquals('/random?param=value&param=',
+            UriLocalizer::cleanUrl('https://domain.com/es/random/?param=value&param='));
     }
 
     /**
@@ -59,7 +65,8 @@ class CleanUrlTest extends TestCase
      */
     public function it_removes_locale_string_in_custom_position()
     {
-        $this->assertEquals('/api/random?param=value&param=', UriLocalizer::cleanUrl('https://domain.com/api/es/random/?param=value&param=', 1));
+        $this->assertEquals('/api/random?param=value&param=',
+            UriLocalizer::cleanUrl('https://domain.com/api/es/random/?param=value&param=', 1));
     }
 
     /**
@@ -67,6 +74,7 @@ class CleanUrlTest extends TestCase
      */
     public function it_keeps_invalid_locale_string()
     {
-        $this->assertEquals('/ca/random?param=value&param=', UriLocalizer::cleanUrl('https://domain.com/ca/random/?param=value&param='));
+        $this->assertEquals('/ca/random?param=value&param=',
+            UriLocalizer::cleanUrl('https://domain.com/ca/random/?param=value&param='));
     }
 }

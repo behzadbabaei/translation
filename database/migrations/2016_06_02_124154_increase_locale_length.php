@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 
 class IncreaseLocaleLength extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -27,7 +28,5 @@ class IncreaseLocaleLength extends Migration
      */
     public function down()
     {
-        //
     }
-
 }

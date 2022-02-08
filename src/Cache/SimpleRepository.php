@@ -1,4 +1,8 @@
-<?php namespace Waavi\Translation\Cache;
+<?php
+
+declare(strict_types = 1);
+
+namespace Waavi\Translation\Cache;
 
 use Illuminate\Contracts\Cache\Store;
 
