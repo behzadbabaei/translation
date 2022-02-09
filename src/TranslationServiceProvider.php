@@ -14,7 +14,6 @@ use Waavi\Translation\Loaders\DatabaseLoader;
 use Waavi\Translation\Loaders\FileLoader;
 use Waavi\Translation\Loaders\MixedLoader;
 use Waavi\Translation\Middleware\TranslationMiddleware;
-use Waavi\Translation\Models\Translation;
 use Waavi\Translation\Repositories\LanguageRepository;
 use Waavi\Translation\Repositories\TranslationRepository;
 use Waavi\Translation\Routes\ResourceRegistrar;

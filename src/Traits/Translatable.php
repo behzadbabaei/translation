@@ -5,10 +5,8 @@ declare(strict_types = 1);
 namespace Waavi\Translation\Traits;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
-use function snake_case;
 use function str_replace;
 use function strtolower;
 use function trans;
@@ -137,7 +135,7 @@ trait Translatable
      *
      * @param string $attribute
      *
-     * @return Translation
+     * @return mixed
      */
     public function translate($attribute)
     {

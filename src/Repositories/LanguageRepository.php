@@ -99,8 +99,7 @@ class LanguageRepository extends Repository
      */
     public function update(array $attributes)
     {
-        return $this->validate($attributes) ? (boolean) Language::where('id', $attributes['id'])
-            ->update($attributes) : false;
+        return $this->validate($attributes) && (boolean) Language::where('id', $attributes['id'])->update($attributes);
     }
 
     /**
