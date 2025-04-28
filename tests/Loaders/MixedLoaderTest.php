@@ -44,8 +44,8 @@ class MixedLoaderTest extends TestCase
             'no.db'   => 'No database',
             'no.file' => 'No file',
         ];
-        $this->fileLoader->shouldReceive('loadSource')->with('en', 'group', 'name')->andReturn($file);
-        $this->dbLoader->shouldReceive('loadSource')->with('en', 'group', 'name')->andReturn($db);
+        $this->fileLoader->shouldReceive('load')->with('en', 'group', 'name')->andReturn($file);
+        $this->dbLoader->shouldReceive('load')->with('en', 'group', 'name')->andReturn($db);
         $this->assertEquals($expected, $this->mixedLoader->load('en', 'group', 'name'));
     }
 
@@ -57,5 +57,50 @@ class MixedLoaderTest extends TestCase
         $this->fileLoader->shouldReceive('addNamespace')->with('package', '/some/path/to/package')->andReturnNull();
         $this->dbLoader->shouldReceive('addNamespace')->with('package', '/some/path/to/package')->andReturnNull();
         $this->assertNull($this->mixedLoader->addNamespace('package', '/some/path/to/package'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_merges_nested_arrays()
+    {
+        $file = [
+            'simple' => 'File',
+            'nested' => [
+                'one' => 'FileOne',
+                'two' => 'FileTwo',
+                'three' => [
+                    'a' => 'FileA',
+                    'b' => 'FileB',
+                ],
+            ],
+        ];
+        $db = [
+            'simple' => 'DB',
+            'nested' => [
+                'one' => 'DBOne',
+                'three' => [
+                    'a' => 'DBA',
+                    'c' => 'DBC',
+                ],
+            ],
+            'db_only' => 'DBOnly',
+        ];
+        $expected = [
+            'simple' => 'File',
+            'nested' => [
+                'one' => 'FileOne',
+                'two' => 'FileTwo',
+                'three' => [
+                    'a' => 'FileA',
+                    'b' => 'FileB',
+                    'c' => 'DBC',
+                ],
+            ],
+            'db_only' => 'DBOnly',
+        ];
+        $this->fileLoader->shouldReceive('load')->with('en', 'group', 'name')->andReturn($file);
+        $this->dbLoader->shouldReceive('load')->with('en', 'group', 'name')->andReturn($db);
+        $this->assertEquals($expected, $this->mixedLoader->load('en', 'group', 'name'));
     }
 }

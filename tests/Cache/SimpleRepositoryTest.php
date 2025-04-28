@@ -6,6 +6,7 @@ namespace Behzadbabaei\Translation\Test\Cache;
 
 use Behzadbabaei\Translation\Cache\SimpleRepository;
 use Behzadbabaei\Translation\Test\TestCase;
+use Illuminate\Cache\ArrayStore;
 
 class SimpleRepositoryTest extends TestCase
 {

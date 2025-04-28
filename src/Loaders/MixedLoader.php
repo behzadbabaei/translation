@@ -58,9 +58,27 @@ class MixedLoader implements Loader
      */
     public function loadSource($locale, $group, $namespace = '*')
     {
+        // Load translations from both loaders for the current locale
         $primary = $this->primaryLoader->load($locale, $group, $namespace);
         $secondary = $this->secondaryLoader->load($locale, $group, $namespace);
 
+        // For non-default locales, we need to merge with the default locale
+        if ($locale !== $this->defaultLocale) {
+            // Load translations from both loaders for the default locale
+            $defaultPrimary = $this->primaryLoader->load($this->defaultLocale, $group, $namespace);
+            $defaultSecondary = $this->secondaryLoader->load($this->defaultLocale, $group, $namespace);
+
+            // Merge default locale translations (primary over secondary)
+            $default = array_replace_recursive($defaultSecondary, $defaultPrimary);
+
+            // Merge current locale translations (primary over secondary)
+            $current = array_replace_recursive($secondary, $primary);
+
+            // Merge current over default (current takes precedence)
+            return array_replace_recursive($default, $current);
+        }
+
+        // For default locale, primary loader takes precedence
         return array_replace_recursive($secondary, $primary);
     }
 

@@ -73,12 +73,12 @@ class CacheLoader implements Loader
      */
     public function loadSource($locale, $group, $namespace = '*')
     {
-        if ($this->cache->has($locale, $namespace, $group)) {
-            return $this->cache->get($locale, $namespace, $group);
+        if ($this->cache->has($locale, $group, $namespace)) {
+            return $this->cache->get($locale, $group, $namespace);
         }
 
         $translations = $this->loader->load($locale, $group, $namespace);
-        $this->cache->put($locale, $namespace, $group, $translations, $this->timeout);
+        $this->cache->put($locale, $group, $namespace, $translations, $this->timeout);
 
         return $translations;
     }

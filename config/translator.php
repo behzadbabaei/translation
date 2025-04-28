@@ -18,7 +18,7 @@ return [
     |   'database'      Use the database as the exclusive source for language entries.
     |   'files'         Use files as the exclusive source for language entries [Laravel's default].
      */
-    'source'            => env('TRANSLATION_SOURCE', 'files'),
+    'source'            => env('TRANSLATION_SOURCE', 'mixed'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
 
     // In case the files source is selected, please enter here the supported locales for your app.
     // Ex: ['en', 'es', 'fr']
-    'available_locales' => [],
+    'available_locales' => ['en', 'es'],
 
     /*
     |--------------------------------------------------------------------------

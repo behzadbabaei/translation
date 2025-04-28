@@ -41,7 +41,7 @@ class FlushTest extends TestCase
     {
         $this->cacheRepository->put('en', 'group', 'namespace', 'value', 60);
         $this->assertTrue($this->cacheRepository->has('en', 'group', 'namespace'));
-        $command = Mockery::mock('Waavi\Translation\Commands\CacheFlushCommand[info]', [$this->cacheRepository, true]);
+        $command = Mockery::mock('Behzadbabaei\Translation\Commands\CacheFlushCommand[info]', [$this->cacheRepository, true]);
         $command->shouldReceive('info')->with('Translation cache cleared.')->once();
         $command->handle();
         $this->assertFalse($this->cacheRepository->has('en', 'group', 'namespace'));

@@ -31,9 +31,9 @@ class CacheLoaderTest extends TestCase
      */
     public function it_returns_from_cache_if_hit()
     {
-        $this->cache->shouldReceive('has')->with('en', 'group', 'name')->once()->andReturn(true);
-        $this->cache->shouldReceive('get')->with('en', 'group', 'name')->once()->andReturn('cache hit');
-        $this->assertEquals('cache hit', $this->cacheLoader->loadSource('en', 'group', 'name'));
+        $this->cache->shouldReceive('has')->with('en', 'group', '*')->once()->andReturn(true);
+        $this->cache->shouldReceive('get')->with('en', 'group', '*')->once()->andReturn('cache hit');
+        $this->assertEquals('cache hit', $this->cacheLoader->loadSource('en', 'group', '*'));
     }
 
     /**
@@ -41,9 +41,9 @@ class CacheLoaderTest extends TestCase
      */
     public function it_returns_from_fallback_and_stores_in_cache_if_miss()
     {
-        $this->cache->shouldReceive('has')->with('en', 'group', 'name')->once()->andReturn(false);
-        $this->fallback->shouldReceive('load')->with('en', 'group', 'name')->once()->andReturn('cache miss');
-        $this->cache->shouldReceive('put')->with('en', 'group', 'name', 'cache miss', 60)->once()->andReturn(true);
-        $this->assertEquals('cache miss', $this->cacheLoader->loadSource('en', 'group', 'name'));
+        $this->cache->shouldReceive('has')->with('en', 'group', '*')->once()->andReturn(false);
+        $this->fallback->shouldReceive('load')->with('en', 'group', '*')->once()->andReturn('cache miss');
+        $this->cache->shouldReceive('put')->with('en', 'group', '*', 'cache miss', 60)->once()->andReturn(true);
+        $this->assertEquals('cache miss', $this->cacheLoader->loadSource('en', 'group', '*'));
     }
 }

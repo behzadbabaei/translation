@@ -104,7 +104,8 @@ class TranslationServiceProvider extends LaravelTranslationServiceProvider
             }
             if ($app['config']->get('translator.cache.enabled')) {
                 $loader = new CacheLoader($defaultLocale, $app['translation.cache.repository'], $loader,
-                    $app['config']->get('translator.cache.timeout'));
+                    $app['config']->get('translator.cache.timeout'),
+                    $app['config']->get('translator.cache.suffix'));
             }
 
             return $loader;
