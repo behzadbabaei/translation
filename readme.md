@@ -1,40 +1,17 @@
-# Better localization management for Laravel
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/behzadbabaei/translation.svg?style=flat-square)](https://packagist.org/packages/behzadbabaei/translation)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/behzadbabaei/translation/master.svg?style=flat-square)](https://travis-ci.org/behzadbabaei/translation)
-[![Total Downloads](https://img.shields.io/packagist/dt/behzadbabaei/translation.svg?style=flat-square)](https://packagist.org/packages/behzadbabaei/translation)
-
 ## Introduction
 
-Keeping a project's translations properly updated is cumbersome. Usually translators do not have access to the codebase, and even when they do it's hard to keep track of which translations are missing for each language or when updates to the original text require that translations be revised.
-
-This package allows developers to leverage their database and cache to manage multilanguage sites, while still working on language files during development and benefiting from all the features Laravel's Translation bundle has, like pluralization or replacement.
-
-WAAVI is a web development studio based in Madrid, Spain. You can learn more about us at [waavi.com](http://waavi.com)
+Keeping a project's translations properly updated is cumbersome. 
 
 ## Table of contents
 
 - [Laravel compatibility](#laravel-compatibility)
-- [Features overview](#features-overview)
-- [Installation](#installation)
-- [Set source for translations](#translations-source)
-  - [Load translations from files](#load-translations-from-files)
-  - [Load translations from the database](#load-translations-from-the-database)
-  - [Mixed mode](#mixed-mode)
-  - [Loading your files into the database](#loading-your-files-into-the-database)
-- [Cache translations](#cache-translations)
-- [Managing languages and translations in the Database](#managing-languages-and-translations-in-the-database)
-  - [Managing Languages](#managing-languages)
-  - [Managing Translations](#managing-translations)
-- [Model attributes translation](#model-attributes-translation)
-- [Uri localization](#uri-localization)
+
 
 ## Laravel compatibility
 
  Laravel  | translation
 :---------|:----------
- 12.x     | 2.9.x and higher
+ 12.x     | 1.x and higher
 ## Features overview
 
  - Allow dynamic changes to the site's text and translations.
@@ -56,7 +33,7 @@ Or manually edit your composer.json file:
 ```json
 {
     "require": {
-        "behzadbabaei/translation": "^1.0"
+        "behzadbabaei/translation": "^v1.1"
     }
 }
 ```
@@ -234,7 +211,7 @@ In order to access the translation cache, add to your config/app.php files, the 
 ```php
     'aliases'         => [
         /* ... */
-        'TranslationCache' => \Waavi\Translation\Facades\TranslationCache::class,
+        'TranslationCache' => \Behzadbabaei\Translation\Facades\TranslationCache::class,
     ]
 ```
 Once done, you may clear the whole translation cache by calling:
@@ -255,7 +232,7 @@ For example, say we have the following file in our resources/lang directory: en/
 ```php
     \TranslationCache::flush('en', 'auth', '*');
     \TranslationCache::flush('en', 'auth/login', '*');
-    \TranslationCache::flush('en', 'login', 'waavi');
+    \TranslationCache::flush('en', 'login', 'behzadbabaei');
 ```
 
 ## Managing languages and translations in the Database
